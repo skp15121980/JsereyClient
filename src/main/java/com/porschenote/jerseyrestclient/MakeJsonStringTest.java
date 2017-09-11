@@ -1,8 +1,11 @@
 package com.porschenote.jerseyrestclient;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
@@ -46,10 +49,13 @@ public class MakeJsonStringTest {
 			JsonObjectBuilder obj_3 = factory.createObjectBuilder();
 			JsonObjectBuilder obj_4 = factory.createObjectBuilder();
 			JsonArrayBuilder ab = factory.createArrayBuilder();
-
-			obj_1.add("firstName", "Sunil121");
-			obj_1.add("lastName", "Pandey121");
-			obj_1.add("Title", "Master");
+			TimeZone timeZone = TimeZone.getTimeZone("UTC");
+			//TimeZone timeZone = TimeZone.getDefault();
+			 Calendar tempCal = Calendar.getInstance(timeZone);
+			obj_1.add("name", "Sunil121");
+			//obj_1.add("startDate1", DateUtil.DateToString(new Date(), "yyyy-MM-dd HH:mm:ss"));
+			obj_1.add("startDate", DateUtil.getOracleFormattedTimeWithZone(tempCal));
+			//obj_1.add("Title", "Master");
 			//obj_2.add("child1", "Satvik");
 			//obj_1.add("child", obj_2);
 			/*obj_2.add("language", "Java");
